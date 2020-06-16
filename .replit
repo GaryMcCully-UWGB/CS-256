@@ -1,1 +1,1 @@
-run = "javac Project1_EmailContructor.java && java Project1_EmailContructor"
+run = "javac Project_1_WidgetOrderingSystem.java && java Project_1_WidgetOrderingSystem"
