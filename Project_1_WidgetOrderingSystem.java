@@ -1,11 +1,19 @@
+//This program simulates a Widget ordering system
+//The goals of this system are as follows:
+//-Obtain order information from customer
+//-Assign the customer an order number
+//-Send the information to the order fulfillment team
+
+//IMPORTANT NOTE: This code was originally designed to send the customer order to Widgets Inc. by opening a raw socket to a Digital Oceans server and submitting the HTML formatted order details. However, I could not get an outbound socket connected to the Digital Oceans Server. I was able to find a stackoverflow thread in which a repl.it engineer stated "I'm an engineer at Repl.it and this is a limitation with our platform. We don't currently allow outgoing network requests." (https://stackoverflow.com/questions/41162897/lxml-requests-on-repl-it)
+
 import java.util.*;
+import java.text.*;
 
 public class Project_1_WidgetOrderingSystem
 {
   public static void main(String[] args)
 
   {
-
     Random RandNumObj = new Random();
     int RandNum = RandNumObj.nextInt(999999999);
 
@@ -17,8 +25,14 @@ public class Project_1_WidgetOrderingSystem
     System.out.println("Enter Company Name:");
     OrderInfo[0]=user_input.nextLine();    
     
-    System.out.println("Enter number of widgets needed:");
+    System.out.println("Enter number of widgets needed ($6.50 per widget):");
     OrderInfo[1]=user_input.nextLine();
+    
+    float TotalNumWidgets = Float.parseFloat(OrderInfo[1]); 
+    float WidTotalFloat = (float)(TotalNumWidgets * 6.50);
+
+    DecimalFormat PriceFormat = new DecimalFormat("#.00");
+    String PriceUSDFormat = PriceFormat.format(WidTotalFloat);
 
     System.out.println("Enter Shipping Address:");
     OrderInfo[2]=user_input.nextLine();
@@ -34,16 +48,26 @@ public class Project_1_WidgetOrderingSystem
 
     System.out.println("Enter contact phone number:");
     OrderInfo[6]=user_input.nextLine();
-    
-    System.out.println("Your Order Information is as follows\nPlease print a copy of this information for your records:");
+
+    System.out.println("\n\nTotal Widget Cost: $"+ PriceUSDFormat);
+
+    //This code is an HTML formatted version of the user supplied data that would hypothetically be sent to a server at Widgets Inc.
+    String HTML_Formatted_Order_Details = "<html><b>Submitted Order Information</b><br><b>Order Number: </b>"+RandNum+"<br><b>Company Name: </b>"+OrderInfo[0]+"<br><b>Ordered Widgets: </b>"+OrderInfo[1]+"<br><b>Widget Cost: </b>$"+PriceUSDFormat+"<br><b>Shipping Address: </b>"+OrderInfo[2]+"<br><b>Shipping Zip Code: </b>"+OrderInfo[3]+"<br><b>Shipping State: </b>"+OrderInfo[4]+"<br><b>Invoicing E-mail: </b>"+OrderInfo[5]+"<br><b>Contact Phone Number: </b>"+OrderInfo[6]+"</html>";
+
+    System.out.println("\n\nSending E-mail to procurement: "+HTML_Formatted_Order_Details);
+
+    System.out.println("\nOrder Successfully Submitted.\n\nPlease save a copy of this information for your records:");
 
     System.out.println("Order Number: "+RandNum);
     System.out.println("Company Name: "+OrderInfo[0]);
-    System.out.println("Ordered Widgets: "+OrderInfo[1]);
+    System.out.println("Number of Widgets: "+OrderInfo[1]);
+    System.out.println("Total Cost: $"+PriceUSDFormat);
     System.out.println("Shipping Address: "+OrderInfo[2]);
     System.out.println("Shipping Zip Code: "+OrderInfo[3]);
     System.out.println("Shipping State: "+OrderInfo[4]);
     System.out.println("Invoicing E-mail: "+OrderInfo[5]);
     System.out.println("Contact Phone Number: "+OrderInfo[6]);
+
+    System.out.println("\n\nThank you for ordering with Widgets Inc.");
   }
 }
