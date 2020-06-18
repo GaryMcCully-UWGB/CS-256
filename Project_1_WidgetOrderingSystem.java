@@ -14,59 +14,59 @@ public class Project_1_WidgetOrderingSystem
   public static void main(String[] args)
 
   {
-    Random RandNumObj = new Random();
-    int RandNum = RandNumObj.nextInt(999999999);
+    Random randNumObj = new Random();
+    int randNum = randNumObj.nextInt(999999999);
 
-    String[] OrderInfo=new String[7];
+    String[] orderInfo=new String[7];
     Scanner user_input= new Scanner(System.in);
 
     System.out.println("Welcome to the Widgets Inc. ordering system.\n");
     
     System.out.println("Enter Company Name:");
-    OrderInfo[0]=user_input.nextLine();    
+    orderInfo[0]=user_input.nextLine();    
     
     System.out.println("Enter number of widgets needed ($6.50 per widget):");
-    OrderInfo[1]=user_input.nextLine();
+    orderInfo[1]=user_input.nextLine();
     
-    float TotalNumWidgets = Float.parseFloat(OrderInfo[1]); 
-    float WidTotalFloat = (float)(TotalNumWidgets * 6.50);
+    float totalNumWidgets = Float.parseFloat(orderInfo[1]); 
+    float widTotalFloat = (float)(totalNumWidgets * 6.50);
 
-    DecimalFormat PriceFormat = new DecimalFormat("#.00");
-    String PriceUSDFormat = PriceFormat.format(WidTotalFloat);
+    DecimalFormat priceFormat = new DecimalFormat("#.00");
+    String priceUSDFormat = priceFormat.format(widTotalFloat);
 
     System.out.println("Enter Shipping Address:");
-    OrderInfo[2]=user_input.nextLine();
+    orderInfo[2]=user_input.nextLine();
 
     System.out.println("Enter Shipping Zip Code:");
-    OrderInfo[3]=user_input.nextLine();
+    orderInfo[3]=user_input.nextLine();
 
     System.out.println("Enter Shipping State:");
-    OrderInfo[4]=user_input.nextLine();
+    orderInfo[4]=user_input.nextLine();
 
     System.out.println("Enter e-mail address for invoicing:");
-    OrderInfo[5]=user_input.nextLine();
+    orderInfo[5]=user_input.nextLine();
 
     System.out.println("Enter contact phone number:");
-    OrderInfo[6]=user_input.nextLine();
+    orderInfo[6]=user_input.nextLine();
 
-    System.out.println("\n\nTotal Widget Cost: $"+ PriceUSDFormat);
+    System.out.println("\n\nTotal Widget Cost: $"+ priceUSDFormat);
 
     //This code is an HTML formatted version of the user supplied data that would hypothetically be sent to a server at Widgets Inc.
-    String HTML_Formatted_Order_Details = "<html><b>Submitted Order Information</b><br><b>Order Number: </b>"+RandNum+"<br><b>Company Name: </b>"+OrderInfo[0]+"<br><b>Ordered Widgets: </b>"+OrderInfo[1]+"<br><b>Widget Cost: </b>$"+PriceUSDFormat+"<br><b>Shipping Address: </b>"+OrderInfo[2]+"<br><b>Shipping Zip Code: </b>"+OrderInfo[3]+"<br><b>Shipping State: </b>"+OrderInfo[4]+"<br><b>Invoicing E-mail: </b>"+OrderInfo[5]+"<br><b>Contact Phone Number: </b>"+OrderInfo[6]+"</html>";
+    String html_Formatted_Order_Details = "<html><b>Submitted Order Information</b><br><b>Order Number: </b>"+randNum+"<br><b>Company Name: </b>"+orderInfo[0]+"<br><b>Ordered Widgets: </b>"+orderInfo[1]+"<br><b>Widget Cost: </b>$"+priceUSDFormat+"<br><b>Shipping Address: </b>"+orderInfo[2]+"<br><b>Shipping Zip Code: </b>"+orderInfo[3]+"<br><b>Shipping State: </b>"+orderInfo[4]+"<br><b>Invoicing E-mail: </b>"+orderInfo[5]+"<br><b>Contact Phone Number: </b>"+orderInfo[6]+"</html>";
 
-    System.out.println("\n\nSending E-mail to procurement: "+HTML_Formatted_Order_Details);
+    System.out.println("\n\nSending E-mail to procurement: "+html_Formatted_Order_Details);
 
     System.out.println("\nOrder Successfully Submitted.\n\nPlease save a copy of this information for your records:");
 
-    System.out.println("Order Number: "+RandNum);
-    System.out.println("Company Name: "+OrderInfo[0]);
-    System.out.println("Number of Widgets: "+OrderInfo[1]);
-    System.out.println("Total Cost: $"+PriceUSDFormat);
-    System.out.println("Shipping Address: "+OrderInfo[2]);
-    System.out.println("Shipping Zip Code: "+OrderInfo[3]);
-    System.out.println("Shipping State: "+OrderInfo[4]);
-    System.out.println("Invoicing E-mail: "+OrderInfo[5]);
-    System.out.println("Contact Phone Number: "+OrderInfo[6]);
+    System.out.println("Order Number: "+randNum);
+    System.out.println("Company Name: "+orderInfo[0]);
+    System.out.println("Number of Widgets: "+orderInfo[1]);
+    System.out.println("Total Cost: $"+priceUSDFormat);
+    System.out.println("Shipping Address: "+orderInfo[2]);
+    System.out.println("Shipping Zip Code: "+orderInfo[3]);
+    System.out.println("Shipping State: "+orderInfo[4]);
+    System.out.println("Invoicing E-mail: "+orderInfo[5]);
+    System.out.println("Contact Phone Number: "+orderInfo[6]);
 
     System.out.println("\n\nThank you for ordering with Widgets Inc.");
   }
